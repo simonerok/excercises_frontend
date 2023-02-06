@@ -1,5 +1,5 @@
 ("strict");
-/* VARIABLES */
+/* GLOBALE VARIABLES */
 const firstNumber = document.querySelector("#firstnumber");
 const secondNumber = document.querySelector("#secondnumber");
 const clear = document.querySelector("#clear");
@@ -52,6 +52,7 @@ function calculate() {
   let operator = readOperator();
   let firstVal = parseFloat(firstNumber.value);
   let secondVal = parseFloat(secondNumber.value);
+  /* denne variabel kan kun tilgås i denne funktion medmindre den videregives i en anden function (passing parameters) */
   let result;
 
   if (operator === "add") {
@@ -65,6 +66,7 @@ function calculate() {
   } else {
     /* denne skal være der så hvis der af en eller anden grund ikke kan være et resultat hvis man fx skriver # eller andet som den ikke kan regne ud */
     result = "Invalid operator";
+    /* WRITING THE RESULT */
     writeResult(result);
     return;
   }
@@ -80,13 +82,14 @@ function calculate() {
   /* WRITING THE RESULT */
   writeResult(result);
 }
-
+/* mangler at lade resultatet blive */
 function writeResult(result) {
   resultContainer.innerHTML = result;
   console.log(result);
 }
 /* CLEAR RESULT */
 function clearResults() {
-  resultContainer = "";
+  resultContainer.innerHTML = "";
+  secondNumber.value = "";
   console.log(clear);
 }
