@@ -82,3 +82,109 @@ const person2 = {
 /* Her bliver persomNy til person1  */
 const personNy = person1;
 console.log(personNy);
+
+const student1 = {
+  firstName: "Harry",
+  lastName: "Potter",
+};
+
+const student2 = student1;
+
+/* De er de samme */
+if (student1 === student2) {
+  console.log("they are the same");
+} else {
+  console.log("they are not the same");
+}
+
+const student3 = {
+  firstName: "Harry",
+  lastName: "Potter",
+};
+
+const student4 = {
+  firstName: "Harry",
+  lastName: "Potter",
+};
+
+/* De er ikke de samme */
+if (student3 === student4) {
+  console.log("they are the same");
+} else {
+  console.log("they are not the same");
+}
+
+/* de er de samme */
+student1.firstName = student2.firstName;
+student1.lastName = student2.lastName;
+
+if (student1.firstName === student2.firstName) {
+  console.log("they are the same");
+} else {
+  console.log("they are not the same");
+}
+
+/* ny opg */
+document.addEventListener("DOMContentLoaded", start);
+
+const list = document.querySelector("#list");
+const dest = document.querySelector("#list tbody");
+const template = document.querySelector("#template#animal");
+
+const HTML = {};
+
+function start() {
+  HTML.list = document.querySelector("#list");
+  HTML.dest = document.querySelector("#list tbody");
+  HTML.template = document.querySelector("#template#animal");
+}
+
+/* Ny opg */
+
+/* CSS  */
+/* #coffee rgb(192, 255, 238)
+ */
+
+/* individuelle variabler */
+const rgb = {
+  r: 192,
+  g: 255,
+  b: 238,
+};
+
+const hsl = {
+  h: 164,
+  s: 100,
+  l: 88,
+};
+
+let hex = "#c0ffee";
+
+/* Nu er det kombineret til et single object */
+const color = {
+  hex: "c0ffee",
+  rgb: { r: 192, g: 255, b: 238 },
+  hsl: { h: 164, s: 100, l: 88 },
+};
+/* hvis vi vil læse den røde farve -så viser consollen at det er 192*/
+let red = color.rgb.r;
+console.log(`red is: ${red}`);
+
+/* ANIMAL OPGAVE */
+/* prototype navne starter med stort bogstav */
+const Animal = {
+  name: "",
+  type: "unknown",
+  desc: "",
+  age: 0,
+};
+
+/* ud fra prototypen kan man lave et reelt object  */
+const animal = Object.create(Animal);
+/* 
+animal.name = name;
+animal.type = type;
+animal.desc = desc; */
+
+/* Animal.image = "image.jpg";
+console.log(animal.image); */
