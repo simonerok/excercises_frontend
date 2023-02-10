@@ -1,0 +1,15 @@
+#bars {
+  display: flex;
+  position: absolute;
+  height: 250px;
+  width: 100%;
+}
+.bar {
+  flex-grow: 1;
+  border: 2px solid rgb(89, 24, 80);
+  background-color: rgb(232, 177, 186);
+  margin-right: 1px;
+  height: 50%;
+  width: 40px;
+  align-self: flex-end;
+}
