@@ -79,9 +79,9 @@ function cssTOrgb(cssCol) {
 }
 
 /* RGB TO HEX */
-
 function RGBtoHEX(rVal, gVal, bVal) {
   console.log(rVal, gVal, bVal);
+  /* 16 er talbasen for hexcolor */
   let rHEX = rVal.toString(16);
   let gHEX = gVal.toString(16);
   let bHEX = bVal.toString(16);
@@ -91,10 +91,21 @@ function RGBtoHEX(rVal, gVal, bVal) {
 
 /* HEX TO RGB */
 function HEXtoRGB(hexcode) {
+  /* 16 er talbasen for hexcolor? */
   let red = Number.parseInt(hexcode.substring(1, 3), 16);
   let green = Number.parseInt(hexcode.substring(3, 5), 16);
-  let blue = Number.parseInt(hexcode.substring(5, 6), 16);
+  let blue = Number.parseInt(hexcode.substring(5, 7), 16);
+  /*  let hexColor = `${red} ${green} ${blue}`; */
 
-  /*  let hexColor = `${rHEX} ${gHEX} ${bHEX}`; */
-  console.log(hexcode);
+  /* const result = {
+    red: red,
+    green: green,
+    blue: blue,
+  };
+  return result; */
+
+  /* Dette er den nemmeste måde at skrive det andet der er udkommenteret på */
+  return { red, green, blue };
 }
+console.log("color to RGB", HEXtoRGB("#f80ea3"));
+console.log("red", HEXtoRGB("#f80ea3").red);

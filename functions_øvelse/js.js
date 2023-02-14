@@ -78,3 +78,9 @@ console.log(greeting("Hans"));
 
 const txt = `Greeting is ${greeting("Hans")} `;
 console.log(txt);
+
+function createPerson(firstname, lastname, age, gender) {
+  return { firstname, lastname, age, gender };
+}
+let newPerson = createPerson("peter", "tolstrup", 44, "man");
+console.log("the person is", newPerson);
