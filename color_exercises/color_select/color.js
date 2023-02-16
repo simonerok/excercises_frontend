@@ -27,16 +27,17 @@ function colorChance() {
   RGB_color.textContent = `RGB: ${red} ${green} ${blue} `;
 
   /* HSL */
-  /* vælger html */
-  /* let HSL_color = document.querySelector("#HSL_color");
 
-  let { h, s, l } = RGBtoHSL(red, green, blue);
-  HSL_color.textContent =  */
+  RGBtoHSL({ red, green, blue });
 }
 
 /* Denne function gør at når man vælger en farve bliver det vist */
-RGBtoHSL(this.value);
-function RGBtoHSL(r, g, b) {
+
+function RGBtoHSL(rgb) {
+  let r = Number.parseFloat(rgb.red);
+  let g = Number.parseFloat(rgb.green);
+  let b = Number.parseFloat(rgb.blue);
+
   r /= 255;
   g /= 255;
   b /= 255;
@@ -71,23 +72,9 @@ function RGBtoHSL(r, g, b) {
   s *= 100;
   l *= 100;
   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
-}
+  let HSL_color = document.querySelector("#HSL_color");
 
-/* HEX TO HSL */
-
-/* function HEXtoHSL() {
-  RGBtoHEX(r, g, b);
-} */
-
-/* RGB TO HEX */
-function RGBtoHEX(rVal, gVal, bVal) {
-  console.log(rVal, gVal, bVal);
-  /* 16 er talbasen for hexcolor */
-  let rHEX = rVal.toString(16).padstart(2, 0);
-  let gHEX = gVal.toString(16).padstart(2, 0);
-  let bHEX = bVal.toString(16).padstart(2, 0);
-  /* console.log(rHEX, gHEX, bHEX); */
-  HEXtoRGB(rHEX, gHEX, bHEX);
+  HSL_color.textContent = ` HSL: ${h}. ${s}, ${l}`;
 }
 
 /* HEX TO RGB */
