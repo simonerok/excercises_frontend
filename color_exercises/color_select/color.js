@@ -11,9 +11,27 @@ function addEventListeners() {
 }
 function colorChance() {
   console.log(this.value);
+  /* HEX */
+  /* vælger html elementet */
   let HEX_color = document.querySelector("#HEX_color");
-  HEX_color.textContent = this.value;
+  /* vi har lavet det om så det sidste den skriver ud er en HEX værdi derfor kan vi sætte det til at være this.value og skrive det ud via textContent i vores p tag (#HEX_color) */
+  HEX_color.textContent = `HEX: ${this.value}`;
   HEXtoRGB(this.value);
+
+  /* RGB */
+  /* vælger html elementet */
+  let RGB_color = document.querySelector("#RGB_color");
+  /* skrives om til RGB fra HEX */
+  let { red, green, blue } = HEXtoRGB(this.value);
+  /* skrive det ud som textContent */
+  RGB_color.textContent = `RGB: ${red} ${green} ${blue} `;
+
+  /* HSL */
+  /* vælger html */
+  /* let HSL_color = document.querySelector("#HSL_color");
+
+  let { h, s, l } = RGBtoHSL(red, green, blue);
+  HSL_color.textContent =  */
 }
 
 /* Denne function gør at når man vælger en farve bliver det vist */
@@ -55,36 +73,19 @@ function RGBtoHSL(r, g, b) {
   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
 }
 
-/* STRING TO RGB */
+/* HEX TO HSL */
 
-cssTOrgb("rgb(12 , 56,233)");
-
-function cssTOrgb(cssCol) {
-  console.log(cssCol.indexOf("("));
-  const numberStr = cssCol.substring(cssCol.indexOf("(") + 1, cssCol.indexOf(")"));
-  const splitArr = numberStr.split(",");
-  console.log("numberStr", numberStr);
-  console.log("splitArr", splitArr);
-  /* vi splitter talene ad og trimmer dem. parseInt bruges til at give et helt tal uden decimaler og konvertere til en string?*/
-  let r = parseInt(splitArr[0].trim());
-  let g = parseInt(splitArr[1].trim());
-  let b = parseInt(splitArr[2].trim());
-  //   r = r.trim();
-  //   r = parseInt(r);
-  console.log("r", r);
-  console.log("g", g);
-  console.log("b", b);
-  console.log("r", typeof r);
+/* function HEXtoHSL() {
   RGBtoHEX(r, g, b);
-}
+} */
 
 /* RGB TO HEX */
 function RGBtoHEX(rVal, gVal, bVal) {
   console.log(rVal, gVal, bVal);
   /* 16 er talbasen for hexcolor */
-  let rHEX = rVal.toString(16);
-  let gHEX = gVal.toString(16);
-  let bHEX = bVal.toString(16);
+  let rHEX = rVal.toString(16).padstart(2, 0);
+  let gHEX = gVal.toString(16).padstart(2, 0);
+  let bHEX = bVal.toString(16).padstart(2, 0);
   /* console.log(rHEX, gHEX, bHEX); */
   HEXtoRGB(rHEX, gHEX, bHEX);
 }

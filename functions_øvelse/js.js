@@ -62,25 +62,62 @@ presentPet(animalType, firstName, animalName);
 let result = myFunc(); */
 
 /* Der sker ikke noget når man laver en variabel? */
-const result = greeting("peter");
-console.log("result", result);
+/* const result = greeting("peter");
+console.log("result", result); */
 
+let sayHi = greeting;
 function greeting(firstName) {
   return `Hello ${firstName}`;
 }
 
 /* greeting(firstName); */
 
-/* Der sker ikke noget når man ændre parametret her, den siger bare undefined */
-greeting("Lau");
-/* undefined */
-console.log(greeting("Hans"));
+greeting();
 
-const txt = `Greeting is ${greeting("Hans")} `;
-console.log(txt);
+/* parametret er "Class" hvis der ikke skrives noget her, bliver det undefined. Denne bliver nu pointeret til functionen greeting og fungere derfor ligesom den*/
+console.log(sayHi("Class"));
 
-function createPerson(firstname, lastname, age, gender) {
+/* const txt = `Greeting is ${greeting("Hans")} `;
+console.log(txt); */
+
+/* Øvelse lav en person */
+/* function createPerson(firstname, lastname, age, gender) {
   return { firstname, lastname, age, gender };
 }
 let newPerson = createPerson("peter", "tolstrup", 44, "man");
-console.log("the person is", newPerson);
+console.log("the person is", newPerson); */
+
+/* CALLBACK FUNCTION */
+const person3 = {
+  firstname: "Harry",
+  lastname: "Potter",
+  hired: false,
+};
+
+const person4 = {
+  firstname: "Ron",
+  lastname: "Weasly",
+  hired: false,
+};
+
+function hire(person) {
+  person.hired = true;
+}
+
+function fire(person) {
+  person.hired = false;
+}
+
+hire(person4);
+fire(person3);
+
+function fireOrHire(action, person) {
+  action(person);
+}
+/* person 4 er parametret */
+fireOrHire(hire, person4);
+/* man kan kalde begge functions og med forskellige parametre */
+fireOrHire(fire, person3);
+
+console.log(`hired: ${person4.hired}`);
+console.log(`hired: ${person3.hired}`);
