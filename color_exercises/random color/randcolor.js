@@ -8,28 +8,22 @@ function randomColor() {
   let b = Math.floor(Math.random() * 255);
   return { r, g, b };
 }
-let rgbColor = randomColor();
-console.log(`en random rgb værdi er: ${rgbColor.r} ${rgbColor.g} ${rgbColor.b}`);
+// console.log(`en random rgb værdi er: ${rgbColor.r} ${rgbColor.g} ${rgbColor.b}`);
 
 /* RGB to css */
-/* function rgbTOcss(r, g, b) {
-  let result1 = r.toString(16);
-  let result2 = g.toString(16);
-  let result3 = b.toString(16);
-  return `Dette retunere rgb som string: ${result1} ${result2} ${result3}`;
-} */
-function rgbTOcss(r, g, b) {
-  return `dett retunere rgb som en string: (${r}, ${g}, ${b})`;
+function rgbTOcss({ r, g, b }) {
+  let rgbval = { r, g, b };
+  return `rgb(${rgbval.r}, ${rgbval.g}, ${rgbval.b})`;
 }
 
-let rgb = { red: 230, green: 200, blue: 100 };
-let cssColorstring = rgbTOcss(rgb.red, rgb.green, rgb.blue);
+/* let rgb = { red: 230, green: 200, blue: 100 }; */
+let cssColorstring = rgbTOcss(randomColor());
 console.log(cssColorstring);
 
 function randomBackground() {
-  let rgb = randomColor();
-  let cssColor = rgbTOcss(rgb.red, rgb.green, rgb.blue);
+  let cssColor = rgbTOcss(randomColor());
   console.log(cssColor);
   document.body.style.backgroundColor = cssColor;
 }
 randomBackground();
+/* rgb.red, rgb.green, rgb.blue */

@@ -27,8 +27,9 @@ function colorChance() {
   RGB_color.textContent = `RGB: ${red} ${green} ${blue} `;
 
   /* HSL */
+  RGBtoHSL(HEXtoRGB(this.value));
 
-  RGBtoHSL({ red, green, blue });
+  RGBtoCSS();
 }
 
 /* Denne function gør at når man vælger en farve bliver det vist */
@@ -77,6 +78,25 @@ function RGBtoHSL(rgb) {
   HSL_color.textContent = ` HSL: ${h}. ${s}, ${l}`;
 }
 
+/* RGB TO CSS */
+function cssTOrgb(cssCol) {
+  console.log(cssCol.indexOf("("));
+  const numberStr = cssCol.substring(cssCol.indexOf("(") + 1, cssCol.indexOf(")"));
+  const splitArr = numberStr.split(",");
+  console.log("numberStr", numberStr);
+  console.log("splitArr", splitArr);
+  let r = parseInt(splitArr[0].trim());
+  let g = parseInt(splitArr[1].trim());
+  let b = parseInt(splitArr[2].trim());
+  //   r = r.trim();
+  //   r = parseInt(r);
+  console.log("r", r);
+  console.log("g", g);
+  console.log("b", b);
+  console.log("r", typeof r);
+  RGBtoHEX(r, g, b);
+}
+
 /* HEX TO RGB */
 function HEXtoRGB(hexcode) {
   /* 16 er talbasen for hexcolor? */
@@ -84,13 +104,6 @@ function HEXtoRGB(hexcode) {
   let green = Number.parseInt(hexcode.substring(3, 5), 16);
   let blue = Number.parseInt(hexcode.substring(5, 7), 16);
   /*  let hexColor = `${red} ${green} ${blue}`; */
-
-  /* const result = {
-    red: red,
-    green: green,
-    blue: blue,
-  };
-  return result; */
 
   /* Dette er den nemmeste måde at skrive det andet der er udkommenteret på */
   return { red, green, blue };
