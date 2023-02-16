@@ -111,6 +111,7 @@ function fire(person) {
 hire(person4);
 fire(person3);
 
+/* action er et parameter der sætter funktionen i gang (den læser de kaldte funktioner foreOrHire(hire,person) ) */
 function fireOrHire(action, person) {
   action(person);
 }
@@ -121,3 +122,83 @@ fireOrHire(fire, person3);
 
 console.log(`hired: ${person4.hired}`);
 console.log(`hired: ${person3.hired}`);
+
+/* FETCH JASON WITH CALLBACK FUNCTION */
+function loadJSON(url, callback) {
+  fetch(url)
+    .then((response) => response.json())
+    .then((jsonData) => callback(jsonData));
+}
+loadJSON("https://petlatkea.dk/2021/hogwarts/students.json", start);
+
+/* jsonData er parametren så den ved hvad den skal laode
+ */
+function start(jsonData) {
+  /* console.table er en struktureret måde at vise data på */
+  /* console.table(jsonData); */
+}
+
+/* Anonomous function */
+/* students.forEach(function (student) {
+  console.log(`name: ${student.firstName}`);
+}); */
+
+/* Higher order functions */
+const people = ["Harry", "Ron", "Hermione", "Neville"];
+
+/* person is a param */
+function Hello(person) {
+  console.log(`Hello ${person}`);
+}
+/* kalder funktionen for alle personerne i hele arrayet until the end of the array */
+people.forEach(Hello);
+
+/* CALLBACK FUNCTION WITH MORE PARAMETERS */
+/* a gives the name, b gives index, c gives the full array, d is undefined fordi der ikke er defineret nogen value (og fordi arrayet ikke er længere)  */
+function testParams(a, b, c, d) {
+  console.log(`a: ${a}, b: ${b} c: ${c}, d: ${d}`);
+}
+people.forEach(testParams);
+
+/* man kan lave den anonymous ved at skrive: */
+/* people.forEach(function (a, b, c, d) {
+  console.log(`a: ${a}, b: ${b} c: ${c}, d: ${d}`);
+});
+ */
+
+/* ARRAY METHODS */
+const animals = [
+  { name: "Mandu", type: "cat" },
+  { name: "Mia", type: "cat" },
+  { name: "Leelo", type: "dog" },
+  { name: "ScoobyDoo", type: "dog" },
+];
+
+function isCat(animal) {
+  if (animal.type === "cat") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function all(animal) {
+  return true;
+}
+
+function none(animal) {
+  return false;
+}
+
+animals.filter(all);
+animals.filter(none);
+/* retunere alle dyr i arrayet */
+console.log("all", animals.filter(all));
+/* retunere et tomt array */
+console.log("none", animals.filter(none));
+
+/* giver et array kun med kattene */
+const onlyCats = animals.filter(isCat);
+console.log(onlyCats);
+
+console.log(isCat(animals[2]));

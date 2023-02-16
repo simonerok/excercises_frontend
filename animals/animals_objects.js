@@ -31,15 +31,24 @@ function prepareObjects(jsonData) {
   jsonData.forEach((jsonObject) => {
     // TODO: Create new object with cleaned data - and store that in the allAnimals array
     const animal = Object.create(Animal);
+    /* NAME */
     /* Her starter vi fra 0 og slutter på det første mellemrum */
     let name = jsonObject.fullname.substring(0, jsonObject.fullname.indexOf(" "));
     /* Her starter vi fra det sidste mellemrum og slutningen behøves ikke være defineret */
 
+    /* DESCRIPTION */
     /* Her finder vi midten af fullname */
     let desc = jsonObject.fullname.substring(jsonObject.fullname.indexOf(" ") + 5, jsonObject.fullname.lastIndexOf(" "));
     console.log(desc);
+
+    /* AGE */
     let age = jsonObject.age;
     console.log(age);
+
+    /* TYPE */
+    /* let type = jsonObject.fullname.substring(0, lastIndexOf(" "); */
+    /*  */
+
     // Giver det nye object værdierne som defineret ovenfor!!!
     animal.name = name;
     animal.type = type;
