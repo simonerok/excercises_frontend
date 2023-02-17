@@ -7,7 +7,7 @@ function start() {
 }
 
 function addEventListeners() {
-  document.querySelector("input").addEventListener("input", colorChance);
+  document.querySelector("#color_selector").addEventListener("input", colorChance);
 }
 function colorChance() {
   console.log(this.value);
@@ -81,6 +81,7 @@ function RGBtoHSL(rgb) {
 /* RGB TO CSS */
 function cssTOrgb(cssCol) {
   console.log(cssCol.indexOf("("));
+  /* når man bruger parametret bliver det til et argument */
   const numberStr = cssCol.substring(cssCol.indexOf("(") + 1, cssCol.indexOf(")"));
   const splitArr = numberStr.split(",");
   console.log("numberStr", numberStr);
@@ -94,6 +95,7 @@ function cssTOrgb(cssCol) {
   console.log("g", g);
   console.log("b", b);
   console.log("r", typeof r);
+  /* funktionskald med 3 argumenter (istedt for parametre) */
   RGBtoHEX(r, g, b);
 }
 

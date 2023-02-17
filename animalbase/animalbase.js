@@ -15,9 +15,9 @@ const Animal = {
 function start() {
   console.log("ready");
 
-  // TODO: Add event-listeners to filter and sort buttons
-
   loadJSON();
+  // TODO: Add event-listeners to filter and sort buttons
+  addButtons();
 }
 
 async function loadJSON() {
@@ -29,6 +29,7 @@ async function loadJSON() {
 }
 
 function prepareObjects(jsonData) {
+  /* map laver et arryet om til et object med vores prepareObject*/
   allAnimals = jsonData.map(preapareObject);
 
   // TODO: This might not be the function we want to call first
@@ -46,7 +47,8 @@ function preapareObject(jsonObject) {
 
   return animal;
 }
-
+/* DISPLAY */
+/* Denne funktion er der filtreret på! dvs når vi skal sortere skal vi huske denne */
 function displayList(animals) {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";
@@ -69,23 +71,69 @@ function displayAnimal(animal) {
   document.querySelector("#list tbody").appendChild(clone);
 }
 
-/* FILTERKNAPPER */
-let filterKnapper = document.querySelectorAll("button");
-let filtrerAnimals = document.querySelector("#filter");
-filterKnapper.forEach((knap) => knap.addEventListener("click", filterknapklik));
+/* FILTRERING -OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv*/
+function addButtons() {
+  document.querySelectorAll("[data-action=filter]").forEach((button) => button.addEventListener("click", selectFilter));
+}
+/* der er tilføjet et event men man behøves ikke skrive eventet */
+function selectFilter(event) {
+  /* event.target.dataset.filter dette gør at man læser data atributten fra vores html dvs cat, dog og "*" =(for alle)*/
+  const filter = event.target.dataset.filter;
+  console.log(`selected ${filter}`);
+  filterList(filter);
+}
 
-function filterknapklik() {
+/* function filterknapklik() {
   console.log("click");
   if (this.dataset.filter === "cat") {
     console.log("det er en kat");
     console.log(allAnimals.filter(isCat));
+
+    allAnimals.filter(isCat);
+  } else if (this.dataset.filter === "dog") {
+    console.log("det er en hund");
+    console.log(allAnimals.filter(isDog));
+
+    allAnimals.filter(isDog);
+  } else if (all) {
+    console.log("alle");
+    console.log(allAnimals.filter(all));
+
+    allAnimals.filter(all);
   }
+} */
+
+/* ANIMAL TYPE */
+function isCat(animal) {
+  return animal.type === "cat";
 }
 
-function isCat(animal) {
-  if (animal.type === "cat" || animal.type === "dog") {
-    return true;
-  } else {
-    return false;
-  }
+/* vi kan nøjes med at skrive return istedet for at lave if else statement fordi der ikke er flere ting den skal kigge efter*/
+function isDog(animal) {
+  return animal.type === "dog";
 }
+
+/* Filtrer listen så filtreringen bliver vist (displayed) */
+function filterList(animalType) {
+  /* Viser alle dyr til at starte med */
+  let filteredList = allAnimals;
+
+  /* KAT */
+  if (animalType === "cat") {
+    filteredList = allAnimals.filter(isCat);
+    console.log("det er en kat");
+    console.log("click");
+    /*  console.log(allAnimals.filter(isCat)); */
+
+    /* HUND */
+    allAnimals.filter(isCat);
+  } else if (animalType === "dog") {
+    filteredList = allAnimals.filter(isDog);
+    console.log("det er en hund");
+    /*  console.log(allAnimals.filter(isDog)); */
+  }
+  /* Her kalder vi på displaylist men får den kun til at vælge det der seleced i filteret */
+  displayList(filteredList);
+}
+
+/* SORTING */
