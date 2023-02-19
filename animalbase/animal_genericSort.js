@@ -1,8 +1,17 @@
 "use strict";
 
 window.addEventListener("DOMContentLoaded", start);
-
+/* GLOBALE VARIABLER */
 let allAnimals = [];
+
+/* setting er nu et object med global variables i */
+const settings = {
+  filter: "all",
+  sortBy: "name",
+  sortDir: "asc",
+};
+
+let filterBy = "all";
 
 // The prototype for all animals:
 const Animal = {
@@ -83,7 +92,14 @@ function selectFilter(event) {
   /* event.target.dataset.filter dette gør at man læser data atributten fra vores html dvs cat, dog og "*" =(for alle)*/
   const filter = event.target.dataset.filter;
   console.log(`selected ${filter}`);
-  filterList(filter);
+  /* filterList(filter); */
+  setFilter(filter);
+}
+
+/* denne function skal kun kalde buildlist og sætte settings.filterBy til filter */
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
 }
 
 /* ANIMAL TYPE */
@@ -97,27 +113,25 @@ function isDog(animal) {
 }
 
 /* Filtrer listen så filtreringen bliver vist (displayed) */
-function filterList(filterBy) {
-  /* Viser alle dyr til at starte med */
-  let filteredList = allAnimals;
+function filterList(filteredList) {
+  /*  let filteredList = allAnimals; */
 
   /* KAT */
-  if (filterBy === "cat") {
-    filteredList = allAnimals.filter(isCat);
+  if (settings.filterBy === "cat") {
     console.log("det er en kat");
     console.log("click");
-    /*  console.log(allAnimals.filter(isCat)); */
+    filteredList = allAnimals.filter(isCat);
 
     /* HUND */
     allAnimals.filter(isCat);
-  } else if (filterBy === "dog") {
+  } else if (settings.filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
     console.log("det er en hund");
     /*  console.log(allAnimals.filter(isDog)); */
   }
   /* Her kalder vi på displaylist men får den kun til at vælge det der seleced i filteret */
   /* OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv */
-  displayList(filteredList);
+  return filteredList;
 }
 
 /* SORTING */
@@ -134,31 +148,46 @@ function selectSort(event) {
   }
 
   console.log(`selected ${sortBy} - ${sortDir}`);
-  sortList(sortBy, sortDir);
+  setSort(sortBy, sortDir);
 }
 
-function sortList(sortBy, sortDir) {
-  /* listen der skal have sorting på */
-  let sortedList = allAnimals;
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
+  buildList();
+}
+
+function sortList(sortedList) {
+  /* let sortedList = allAnimals; */
   let direction = 1;
   /* desc for descenting order -altså modat ascending (kommer også fra html dataattribut)*/
-  if (sortDir === "desc") {
+  if (settings.sortDir === "desc") {
     direction = -1;
   } else {
-    direction = 1;
+    settings.direction = 1;
   }
 
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(animalA, animalB) {
-    console.log(`sortBy is ${sortBy}`);
+    /* console.log(`sortBy is ${sortBy}`); */
     /* < betyder hvis animalA kommer før animalB */
-    if (animalA[sortBy] < animalB[sortBy]) {
+    if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
       return -1 * direction;
     } else {
       return 1 * direction;
     }
   }
-  /* display sortedList skal kaldes på fordi vi lavede sorting på den */
+  /* retunere sortedList  */
+  return sortedList;
+}
+
+/* BUILDLIST FOR KOMBINATION AF SROT OG FILTER */
+
+function buildList() {
+  /* laver en ny liste der skal filtreres på som er lavet ud fra filterList funktionen */
+  const currentList = filterList();
+  const sortedList = sortList(currentList);
+  /* Den skal stadig display med displayList funktionen, men nu er sort og filter uafhængig af displayList altså ikke kaldt inde i den*/
   displayList(sortedList);
 }
