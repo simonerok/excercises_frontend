@@ -1,0 +1,17 @@
+
+FILTER:
+- try hardcode filter (only cats) NB: hardcoding betyder man bare får filtreringen til at virke i consollen uden at få det til at virke med kanpper
+- filter either cats or Dogs
+- add user "all"- filter
+- add some cleanup
+
+SORTING: 
+- try hardcode sorting by name 
+- add user interactivity 
+- a more generic sort function? 
+- chance sort direction
+- add cleanup 
+
+FINAL:
+- combining filter and sort
+

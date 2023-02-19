@@ -71,9 +71,12 @@ function displayAnimal(animal) {
   document.querySelector("#list tbody").appendChild(clone);
 }
 
-/* FILTRERING -OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv*/
+/* FILTRERING */
 function addButtons() {
   document.querySelectorAll("[data-action=filter]").forEach((button) => button.addEventListener("click", selectFilter));
+
+  /* for SORTING */
+  document.querySelectorAll("[data-action=sort]").forEach((button) => button.addEventListener("click", selectSort));
 }
 /* der er tilføjet et event men man behøves ikke skrive eventet */
 function selectFilter(event) {
@@ -81,6 +84,14 @@ function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`selected ${filter}`);
   filterList(filter);
+}
+
+/* SORTING */
+function selectSort(event) {
+  /* dataset.sort kommer fra hvad det hedder i html*/
+  const sortBy = event.target.dataset.sort;
+  console.log(`selected ${sortBy}`);
+  sortList(sortBy);
 }
 
 /* function filterknapklik() {
@@ -114,12 +125,12 @@ function isDog(animal) {
 }
 
 /* Filtrer listen så filtreringen bliver vist (displayed) */
-function filterList(animalType) {
+function filterList(filterBy) {
   /* Viser alle dyr til at starte med */
   let filteredList = allAnimals;
 
   /* KAT */
-  if (animalType === "cat") {
+  if (filterBy === "cat") {
     filteredList = allAnimals.filter(isCat);
     console.log("det er en kat");
     console.log("click");
@@ -127,13 +138,44 @@ function filterList(animalType) {
 
     /* HUND */
     allAnimals.filter(isCat);
-  } else if (animalType === "dog") {
+  } else if (filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
     console.log("det er en hund");
     /*  console.log(allAnimals.filter(isDog)); */
   }
   /* Her kalder vi på displaylist men får den kun til at vælge det der seleced i filteret */
+  /* OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv */
   displayList(filteredList);
 }
 
 /* SORTING */
+function sortList(sortBy) {
+  /* listen der skal have sorting på */
+  let sortedList = allAnimals;
+  if (sortBy === "name") {
+    sortedList = sortedList.sort(sortByName);
+  } else if (sortBy === "type") {
+    sortedList = sortedList.sort(sortByType);
+  }
+  /* display sortedList skal kaldes på fordi vi lavede sorting på den */
+  displayList(sortedList);
+}
+
+function sortByName(animalA, animalB) {
+  /* < betyder hvis animalA kommer før animalB */
+  if (animalA.name < animalB.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+/* husk at tjekke i inspector sortList() */
+
+function sortByType(animalA, animalB) {
+  /* < betyder hvis animalA kommer før animalB */
+  if (animalA.type < animalB.type) {
+    return -1;
+  } else {
+    return 1;
+  }
+}

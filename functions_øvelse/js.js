@@ -166,7 +166,7 @@ people.forEach(testParams);
 });
  */
 
-/* ARRAY METHODS */
+/* ARRAY METHODS FILTERING */
 const animals = [
   { name: "Mandu", type: "cat" },
   { name: "Mia", type: "cat" },
@@ -202,3 +202,13 @@ const onlyCats = animals.filter(isCat);
 console.log(onlyCats);
 
 console.log(isCat(animals[2]));
+
+/* ARRAY METHODS SORTING */
+const peopleAgain = ["Harry", "Ron", "Hermione", "Neville"];
+
+/* Sortere i alfabetisk rækkefølge */
+peopleAgain.sort();
+
+console.log(peopleAgain.sort());
+
+/* Den omventdte rækkefølge ?*/
