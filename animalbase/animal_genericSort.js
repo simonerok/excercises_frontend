@@ -4,6 +4,13 @@ window.addEventListener("DOMContentLoaded", start);
 /* GLOBALE VARIABLER */
 let allAnimals = [];
 
+// The prototype for all animals:
+const Animal = {
+  name: "",
+  desc: "-unknown animal-",
+  type: "",
+  age: 0,
+};
 /* setting er nu et object med global variables i */
 const settings = {
   filter: "all",
@@ -12,14 +19,6 @@ const settings = {
 };
 
 let filterBy = "all";
-
-// The prototype for all animals:
-const Animal = {
-  name: "",
-  desc: "-unknown animal-",
-  type: "",
-  age: 0,
-};
 
 function start() {
   console.log("ready");
@@ -80,7 +79,7 @@ function displayAnimal(animal) {
   document.querySelector("#list tbody").appendChild(clone);
 }
 
-/* FILTRERING */
+/* FILTRERING NB filtering skal ske før soritng  */
 function addButtons() {
   document.querySelectorAll("[data-action=filter]").forEach((button) => button.addEventListener("click", selectFilter));
 
@@ -96,7 +95,7 @@ function selectFilter(event) {
   setFilter(filter);
 }
 
-/* denne function skal kun kalde buildlist og sætte settings.filterBy til filter */
+/* denne function skal kun kalde buildlist og sætte settings.filterBy til filter fordi filter ikke tager højde for rækkefælgen */
 function setFilter(filter) {
   settings.filterBy = filter;
   buildList();
@@ -134,11 +133,28 @@ function filterList(filteredList) {
   return filteredList;
 }
 
+/* BUILDLIST FOR KOMBINATION AF SROT OG FILTER */
+
+function buildList() {
+  /* laver en ny liste der skal filtreres på som er lavet ud fra filterList funktionen */
+  const currentList = filterList(allAnimals);
+  const sortedList = sortList(currentList);
+  /* Den skal stadig display med displayList funktionen, men nu er sort og filter uafhængig af displayList altså ikke kaldt inde i den*/
+  displayList(sortedList);
+}
+
 /* SORTING */
 function selectSort(event) {
   /* dataset.sort kommer fra hvad det hedder i html*/
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
+
+  /* finder den gamle "knap" der er trykket på og fjerner sortBy klassen */
+  const oldElement = document.querySelector(`[data-sort=${settings.sortBy}]`);
+  oldElement.classList.remove("sortby");
+
+  /* Styling på knapper når de er klikket på (classnames må ikke have uppercase derfor sortby med lille b)*/
+  event.target.classList.add("sortby");
 
   /* Denne if sætning ændre retningen/toggler direction */
   if (sortDir === "asc") {
@@ -158,6 +174,7 @@ function setSort(sortBy, sortDir) {
 }
 
 function sortList(sortedList) {
+  console.log(`sorted list er ${sortedList}`);
   /* let sortedList = allAnimals; */
   let direction = 1;
   /* desc for descenting order -altså modat ascending (kommer også fra html dataattribut)*/
@@ -170,7 +187,7 @@ function sortList(sortedList) {
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(animalA, animalB) {
-    /* console.log(`sortBy is ${sortBy}`); */
+    console.log(`settings.sortBy is ${settings.sortBy}`);
     /* < betyder hvis animalA kommer før animalB */
     if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
       return -1 * direction;
@@ -178,16 +195,6 @@ function sortList(sortedList) {
       return 1 * direction;
     }
   }
-  /* retunere sortedList  */
+  /* retunere sortedList */
   return sortedList;
-}
-
-/* BUILDLIST FOR KOMBINATION AF SROT OG FILTER */
-
-function buildList() {
-  /* laver en ny liste der skal filtreres på som er lavet ud fra filterList funktionen */
-  const currentList = filterList();
-  const sortedList = sortList(currentList);
-  /* Den skal stadig display med displayList funktionen, men nu er sort og filter uafhængig af displayList altså ikke kaldt inde i den*/
-  displayList(sortedList);
 }

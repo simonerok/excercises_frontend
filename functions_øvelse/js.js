@@ -203,12 +203,131 @@ console.log(onlyCats);
 
 console.log(isCat(animals[2]));
 
-/* ARRAY METHODS SORTING */
+/* FILTER AGAIN*/
 const peopleAgain = ["Harry", "Ron", "Hermione", "Neville"];
+peopleAgain.forEach(printNames);
+
+/* name, index og arr er fundet pga den ved hvad disse parametre er (det første er altid elementet, det andet er index og det trejse er arryet) */
+function printNames(name, index, arr) {
+  if (index === 0) {
+    /* denne if sætning kan bruges til debugging da den viser arrayet efter det første index (0) */
+    console.log("Array: ", arr);
+  }
+  console.log(`${name} has index number ${index}`);
+}
+
+/* FILTER */
+let shortNames = peopleAgain.filter(removeLongNames);
+
+function removeLongNames(name) {
+  let isLong;
+  /*5 er længden på navnet. Den sletter de navne der er over 5 bogstaver */
+  if (name.length > 5) {
+    return false;
+  } else {
+    isLong = true;
+  }
+  return isLong;
+}
+
+/* this is returning truthy or falsy  */
+/*  return name.length <= 5; */
+
+console.log("short names", shortNames);
+
+/* ARRAY METHODS SORTING */
 
 /* Sortere i alfabetisk rækkefølge */
 peopleAgain.sort();
 
-console.log(peopleAgain.sort());
+console.log(peopleAgain.sort(sortAlphabetically));
 
+/* fordi det er string inde i arryet vil den lede efter bogstaver */
+/* function sortAlphabetically(nameA, nameB) {
+  if (nameA < nameB) {
+    console.log(`nameA: ${nameA} and nameB ${nameB}`);
+    return -1;
+  } else if (nameB < nameA) {
+    return 1;
+  } else {
+    return 0;
+  }
+} */
+
+console.log("names sorted", peopleAgain);
 /* Den omventdte rækkefølge ?*/
+function sortAlphabetically(nameA, nameB) {
+  /* hvis man skifter til > vil den gøre det den modsatte vej fra Å-A */
+  if (nameA > nameB) {
+    console.log(`nameA: ${nameA} and nameB ${nameB}`);
+    return -1;
+  } else if (nameB > nameA) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+/*  sort object */
+
+const names = [{ name: "Signe" }, { name: "John" }, { name: "Frank" }];
+
+function sortAlphabetically(elementA, elementB) {
+  /* hvis man skifter til > vil den gøre det den modsatte vej fra Å-A */
+  if (elementA.name > elementB.name) {
+    console.log(`nameA: ${nameA} and nameB ${nameB}`);
+    return -1;
+  } else if (nameB > nameA) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+/* CLOSURE */
+/* num kan kun blive brugt indeni funktionen */
+/* function closureTest(num) {
+
+} */
+
+const animalsNy = [
+  { name: "Mandu", type: "cat" },
+  { name: "Mia", type: "cat" },
+  { name: "Leelo", type: "dog" },
+  { name: "ScoobyDoo", type: "dog" },
+  { name: "Honey", type: "Honeybadger" },
+];
+console.log("allAnimals", allAnimals);
+
+filterList("cat");
+filterList("dog");
+
+function filterList(type) {
+  let list;
+  if (type === "cat") {
+    list = allAnimals.filter(isCat);
+  } else if (type === "dog") {
+    list = allAnimals.filter(isDog);
+  }
+  //Fake displayList
+  console.log("list", list);
+}
+
+function isCat(animal) {
+  return animal.type === "cat";
+}
+function isDog(animal) {
+  return animal.type === "dog";
+}
+
+/* Dette er closure måden som skal bruges i stedte for at skrive det samme flere gange (hvis man fx har mange forskellige dyr og ikke kun 2 slags) */
+function filterList2(type) {
+  const list2 = allAnimals.filter(isAnimalType);
+
+  function isAnimalType(animal) {
+    return animal.type === type;
+  }
+  console.log("list 2", list2);
+}
+
+filterList2("Honeybadger");

@@ -125,6 +125,7 @@ function isDog(animal) {
 }
 
 /* Filtrer listen så filtreringen bliver vist (displayed) */
+/* filterBy bliver til en form for global variabel if sætningerne er i samme function */
 function filterList(filterBy) {
   /* Viser alle dyr til at starte med */
   let filteredList = allAnimals;
@@ -144,7 +145,6 @@ function filterList(filterBy) {
     /*  console.log(allAnimals.filter(isDog)); */
   }
   /* Her kalder vi på displaylist men får den kun til at vælge det der seleced i filteret */
-  /* OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv */
   displayList(filteredList);
 }
 
