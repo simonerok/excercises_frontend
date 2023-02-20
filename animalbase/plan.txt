@@ -15,3 +15,12 @@ SORTING:
 FINAL:
 - combining filter and sort
 
+STARS
+- remember modal (the data), view (filter, sorting and stars) and controller (user experience, clicks etc)
+1. MODAL 
+- add start to animal 
+2. View 
+- add visible (fixed star) to each animal on the list
+- get the star status from the modal and display that in the list (if selected or not)
+3. controller
+- add user interactivity to turn stars on/off
