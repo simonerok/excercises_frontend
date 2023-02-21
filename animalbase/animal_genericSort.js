@@ -147,32 +147,54 @@ function tryMakeWinner(selectedAnimal) {
     /* ignore or remove other - her skal vi spørge brugeren om at ignore en eller remove en*/
     document.querySelector("#remove_other").classList.remove("hide");
     document.querySelector("#remove_other .closebtn").addEventListener("click", closeDialog);
-    /* hvis ignoreret skal der ikke ske noget */
-
     document.querySelector("#remove_other #remove_other_btn").addEventListener("click", clickRemoveOther);
-    document.querySelector("#remove_other .closebtn").removeaddEventListener("click", closeDialog);
+    /* hvis ignoreret skal der ikke ske noget */
 
     function closeDialog() {
       document.querySelector("#remove_other").classList.add("hide");
+      document.querySelector("#remove_other .closebtn").removeEventListener("click", closeDialog);
+      document.querySelector("#remove_other #remove_other_btn").removeEventListener("click", clickRemoveOther);
     }
 
-    /* if remove other */
-    /*  removeWinner(other);
-    makeWinner(selectedAnimal); */
+    function clickRemoveOther() {
+      /* if remove other */
+      removeWinner(other);
+      makeWinner(selectedAnimal);
+      /* denne kaldes for at knapperne får fjernet eventlistener */
+      buildList();
+      closeDialog();
+    }
   }
 
   function removeAorB(winnerA, winnerB) {
     /* spørg brugeren om at ignorere. Eller remove A eller B */
-
-    /* if ignore -sker der ingenting */
+    document.querySelector("#remove_AorB").classList.remove("hide");
+    document.querySelector("#remove_AorB .closebtn").addEventListener("click", closeDialog);
+    document.querySelector("#remove_AorB #remove_a").addEventListener("click", clickRemoveA);
+    document.querySelector("#remove_AorB #remove_b").addEventListener("click", clickRemoveB);
+    /* close dialog */
+    function closeDialog() {
+      document.querySelector("#remove_AorB").classList.add("hide");
+      document.querySelector("#remove_AorB .closebtn").removeEventListener("click", closeDialog);
+      document.querySelector("#remove_AorB #remove_a").removeEventListener("click", clickRemoveA);
+      document.querySelector("#remove_AorB #remove_b").removeEventListener("click", clickRemoveB);
+    }
 
     /* if remove A */
-    removeWinner(winnerA);
-    makeWinner(selectedAnimal);
+    function clickRemoveA() {
+      removeWinner(winnerA);
+      makeWinner(selectedAnimal);
+      buildList();
+      closeDialog();
+    }
 
     /* if remove B */
-    removeWinner(winnerB);
-    makeWinner(selectedAnimal);
+    function clickRemoveB() {
+      removeWinner(winnerB);
+      makeWinner(selectedAnimal);
+      buildList();
+      closeDialog();
+    }
   }
 
   function removeWinner(winnerAnimal) {
