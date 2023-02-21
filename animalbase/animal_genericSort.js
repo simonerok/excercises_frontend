@@ -148,6 +148,8 @@ function tryMakeWinner(selectedAnimal) {
     document.querySelector("#remove_other").classList.remove("hide");
     document.querySelector("#remove_other .closebtn").addEventListener("click", closeDialog);
     document.querySelector("#remove_other #remove_other_btn").addEventListener("click", clickRemoveOther);
+    /* dette viser navnet istedet for at der bare står remove other */
+    document.querySelector("#remove_other_btn [data-field=otherwinner]").textContent = other.name;
     /* hvis ignoreret skal der ikke ske noget */
 
     function closeDialog() {
@@ -172,6 +174,10 @@ function tryMakeWinner(selectedAnimal) {
     document.querySelector("#remove_AorB .closebtn").addEventListener("click", closeDialog);
     document.querySelector("#remove_AorB #remove_a").addEventListener("click", clickRemoveA);
     document.querySelector("#remove_AorB #remove_b").addEventListener("click", clickRemoveB);
+    /* Vis navne på knapper (A og B) */
+    document.querySelector("#remove_AorB [data-field=winnerA]").textContent = winnerA.name;
+    document.querySelector("#remove_AorB [data-field=winnerB]").textContent = winnerB.name;
+
     /* close dialog */
     function closeDialog() {
       document.querySelector("#remove_AorB").classList.add("hide");
