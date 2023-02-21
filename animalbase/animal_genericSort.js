@@ -88,7 +88,10 @@ function displayAnimal(animal) {
   clone.querySelector("[data-field=star]").addEventListener("click", clickStar);
 
   function clickStar() {
+    /* Dette er det samme den viser det modsatte */
+    /* animal.star = !animal.star; */
     if (animal.star === true) {
+      /* it toggles true and false så de kan vælges fra og til */
       animal.star = false;
     } else {
       animal.star = true;
@@ -181,7 +184,9 @@ function tryMakeWinner(selectedAnimal) {
   }
 }
 
-/* FILTRERING NB filtering skal ske før soritng  */
+/* FILTRERING */
+/* NB filtering skal ske før soritng pga sorting ikke tager højde for rækkefølge */
+/* TO DO tilføj textContent overskrift der skifter med filter */
 function addButtons() {
   document.querySelectorAll("[data-action=filter]").forEach((button) => button.addEventListener("click", selectFilter));
 

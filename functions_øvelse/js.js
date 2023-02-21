@@ -274,14 +274,14 @@ const names = [{ name: "Signe" }, { name: "John" }, { name: "Frank" }];
 
 function sortAlphabetically(elementA, elementB) {
   /* hvis man skifter til > vil den gøre det den modsatte vej fra Å-A */
-  if (elementA.name > elementB.name) {
+  /*   if (elementA.name > elementB.name) {
     console.log(`nameA: ${nameA} and nameB ${nameB}`);
     return -1;
   } else if (nameB > nameA) {
     return 1;
   } else {
     return 0;
-  }
+  } */
 }
 
 /* CLOSURE */
@@ -297,12 +297,12 @@ const animalsNy = [
   { name: "ScoobyDoo", type: "dog" },
   { name: "Honey", type: "Honeybadger" },
 ];
-console.log("allAnimals", allAnimals);
-
+/* console.log("allAnimals", allAnimals); */
+/* 
 filterList("cat");
 filterList("dog");
-
-function filterList(type) {
+ */
+/* function filterList(type) {
   let list;
   if (type === "cat") {
     list = allAnimals.filter(isCat);
@@ -311,17 +311,17 @@ function filterList(type) {
   }
   //Fake displayList
   console.log("list", list);
-}
-
+} */
+/* 
 function isCat(animal) {
   return animal.type === "cat";
 }
 function isDog(animal) {
   return animal.type === "dog";
-}
+} */
 
 /* Dette er closure måden som skal bruges i stedte for at skrive det samme flere gange (hvis man fx har mange forskellige dyr og ikke kun 2 slags) */
-function filterList2(type) {
+/* function filterList2(type) {
   const list2 = allAnimals.filter(isAnimalType);
 
   function isAnimalType(animal) {
@@ -330,4 +330,57 @@ function filterList2(type) {
   console.log("list 2", list2);
 }
 
-filterList2("Honeybadger");
+filterList2("Honeybadger"); */
+
+/* FLAG METHOD */
+/* sealevel: 1,5, not wearing wetsuit, is lying down*/
+console.log("is drowned", isDrowned(1.5, true, true));
+
+function isDrowned(seaLevel, wetsuit, lyingDown) {
+  let isDrowned = false;
+  /* ! betyder false */
+  if (seaLevel > 2 && !wetsuit) {
+    isDrowned = true;
+    console.log("is drowned");
+  } else if (seaLevel < 1 && lyingDown) {
+    console.log("is drowned");
+    isDrowned = true;
+  }
+  return isDrowned;
+}
+
+/* leap year øvelse */
+/* A year is a leap year if it is divisible by four, unless it is divisible by 100, then it is only a leap year if it is divisible by 400. */
+
+console.log("remainder", 2020 % 1);
+console.log("remainder", 2019 % 3);
+console.log("remainder", 1900 % 10);
+console.log("remainder", 2000 % 10);
+
+function isLeapYear(year) {
+  let leapFlag = false;
+  if (year % 4 === 0) {
+    if (year % 100 === 0) {
+      if (year % 400 === 0) {
+        leapFlag = true;
+      }
+    }
+  }
+  return leapFlag;
+}
+
+/* LEAP YEAR LØSNING */
+// program to check leap year
+function checkIfLeapYear(year) {
+  //three conditions to find out the leap year
+  if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
+    console.log(year + " is a leap year");
+  } else {
+    console.log(year + " is not a leap year");
+  }
+}
+
+// take input
+const year = prompt("Enter a year:");
+
+checkIfLeapYear(year);
