@@ -11,6 +11,7 @@ const Animal = {
   type: "",
   age: 0,
   star: false,
+  winner: false,
 };
 /* setting er nu et object med global variables i */
 const settings = {
@@ -77,12 +78,13 @@ function displayAnimal(animal) {
   clone.querySelector("[data-field=desc]").textContent = animal.desc;
   clone.querySelector("[data-field=type]").textContent = animal.type;
   clone.querySelector("[data-field=age]").textContent = animal.age;
-  /* TILFØJER STJERNE */
+  /* TILFØJER STJERNE (husk at tilføje i html, prototype og kalde buildlisti prepObj) */
   if (animal.star === true) {
     clone.querySelector("[data-field=star]").textContent = "⭐";
   } else {
     clone.querySelector("[data-field=star]").textContent = "☆";
   }
+  /* click */
   clone.querySelector("[data-field=star]").addEventListener("click", clickStar);
 
   function clickStar() {
@@ -93,9 +95,90 @@ function displayAnimal(animal) {
     }
     buildList();
   }
+  /* TILFØJER WINNER */
+  if (animal.winner === true) {
+    clone.querySelector("[data-field=winner]").dataset.winner = true;
+  } else {
+    clone.querySelector("[data-field=winner]").dataset.winner = false;
+  }
+  /* adder klik til ikonerne */
+  clone.querySelector("[data-field=winner]").addEventListener("click", clickWinner);
+
+  function clickWinner() {
+    if (animal.winner === true) {
+      animal.winner = false;
+    } else {
+      tryMakeWinner(animal);
+    }
+    buildList();
+  }
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
+}
+
+/* REGLER kun 1 af hver type kan være vindere ad gangen og der kan være 2 vindere i alt */
+function tryMakeWinner(selectedAnimal) {
+  /* list af alle vindere */
+  const winners = allAnimals.filter((animal) => animal.winner === true);
+  /* for at få antallet af vindere */
+  const numberOfWinners = winners.length;
+  /* finder den gamle vinder */
+  const other = winners.filter((animal) => animal.type === selectedAnimal.type).shift();
+
+  /* hvis der er en anden af samme type der er winner */
+  if (other !== undefined) {
+    console.log("there can be only one winner of each type");
+    /* remove other animal (der kan kun være 1 af hver type)*/
+    removeOther(other);
+    /* rules 2 vindere ad gangen */
+  } else if (numberOfWinners >= 2) {
+    console.log("there can only be 2 winners");
+    removeAorB(winners[0], winners[1]);
+    /* hvis der ikke sker et problem skal den bare lave det valgte dyr til winner */
+  } else {
+    makeWinner(selectedAnimal);
+  }
+
+  function removeOther(other) {
+    /* ignore or remove other - her skal vi spørge brugeren om at ignore en eller remove en*/
+    document.querySelector("#remove_other").classList.remove("hide");
+    document.querySelector("#remove_other .closebtn").addEventListener("click", closeDialog);
+    /* hvis ignoreret skal der ikke ske noget */
+
+    document.querySelector("#remove_other #remove_other_btn").addEventListener("click", clickRemoveOther);
+    document.querySelector("#remove_other .closebtn").removeaddEventListener("click", closeDialog);
+
+    function closeDialog() {
+      document.querySelector("#remove_other").classList.add("hide");
+    }
+
+    /* if remove other */
+    /*  removeWinner(other);
+    makeWinner(selectedAnimal); */
+  }
+
+  function removeAorB(winnerA, winnerB) {
+    /* spørg brugeren om at ignorere. Eller remove A eller B */
+
+    /* if ignore -sker der ingenting */
+
+    /* if remove A */
+    removeWinner(winnerA);
+    makeWinner(selectedAnimal);
+
+    /* if remove B */
+    removeWinner(winnerB);
+    makeWinner(selectedAnimal);
+  }
+
+  function removeWinner(winnerAnimal) {
+    winnerAnimal.winner = false;
+  }
+
+  function makeWinner(animal) {
+    animal.winner = true;
+  }
 }
 
 /* FILTRERING NB filtering skal ske før soritng  */
@@ -193,7 +276,6 @@ function setSort(sortBy, sortDir) {
 }
 
 function sortList(sortedList) {
-  console.log(`sorted list er ${sortedList}`);
   /* let sortedList = allAnimals; */
   let direction = 1;
   /* desc for descenting order -altså modat ascending (kommer også fra html dataattribut)*/

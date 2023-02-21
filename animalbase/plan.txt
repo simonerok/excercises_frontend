@@ -24,3 +24,19 @@ STARS
 - get the star status from the modal and display that in the list (if selected or not)
 3. controller
 - add user interactivity to turn stars on/off
+
+WINNERS
+1. MODAL
+- add winner status
+2. View
+- add visible winners (fixed values) in the list
+- get winner status from modal and display that in the list 
+3. controller
+- fake winners test (add a toggle btn so each animal can be winners/not winners)
+-  design logic and the rules
+- implement the logic with functions with lot of basic functions
+- add user interface into logic 
+4. view (again) hardcoded dialog boxes
+- ask user if they want to ignore or remove A or B
+ask user if they want to ignore or remove other
+- dynamic dialog boxes 

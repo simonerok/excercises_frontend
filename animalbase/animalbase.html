@@ -22,6 +22,7 @@
       <thead>
         <tr id="sorting">
           <!-- age og type er lavet til descending -->
+          <th data-action="sort" data-sort-direction="asc" data-sort="winner">Winner</th>
           <th data-action="sort" data-sort-direction="asc" data-sort="star">⭐</th>
           <th data-action="sort" data-sort-direction="asc" data-sort="name">Name</th>
           <th data-action="sort" data-sort-direction="desc" data-sort="type">Type</th>
@@ -36,6 +37,7 @@
 
     <template id="animal">
       <tr>
+        <td data-field="winner" data-winner="false"></td>
         <td data-field="star">☆</td>
         <td data-field="name">NAME</td>
         <td data-field="type">TYPE</td>
@@ -43,6 +45,19 @@
         <td data-field="age">AGE</td>
       </tr>
     </template>
+
+    <div id="remove_other" class="modal hide">
+      <div class="dialog">
+        <h1>Warning:</h1>
+        <button class="closebtn">X</button>
+        <p>
+          There can be only one winner of each type at a time.
+          <br />
+          Do you want to remove the other winner?
+        </p>
+        <button id="remove_other_btn">remove the other</button>
+      </div>
+    </div>
 
     <script src="animal_genericSort.js"></script>
   </body>
