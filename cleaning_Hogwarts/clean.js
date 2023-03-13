@@ -42,7 +42,7 @@ function prepareObjects(jsonData) {
     /* result er en midlertidig variabel at putte det ind i */
     let result = "";
 
-    /* fordi vi vil starte med at trimme stringen  fordi ???*/
+    /* fordi vi vil starte med at trimme stringen  fordi der er et mellemrum før Griffindor huset???*/
     let trimmedString1 = fullnameString.trimStart();
     result = trimmedString1.substring(0, trimmedString1.indexOf(" "));
     /* Leanne er et særtilfælde hendes navn er kun Leanne */

@@ -110,6 +110,7 @@ function displayAnimal(animal) {
   function clickWinner() {
     if (animal.winner === true) {
       animal.winner = false;
+      winner;
     } else {
       tryMakeWinner(animal);
     }
@@ -137,6 +138,7 @@ function tryMakeWinner(selectedAnimal) {
     /* rules 2 vindere ad gangen */
   } else if (numberOfWinners >= 2) {
     console.log("there can only be 2 winners");
+    dialog;
     removeAorB(winners[0], winners[1]);
     /* hvis der ikke sker et problem skal den bare lave det valgte dyr til winner */
   } else {
@@ -204,7 +206,7 @@ function tryMakeWinner(selectedAnimal) {
   }
 
   function removeWinner(winnerAnimal) {
-    winnerAnimal.winner = false;
+    winnerAnimal.prefect = false;
   }
 
   function makeWinner(animal) {
@@ -264,7 +266,7 @@ function filterList(filteredList) {
     /*  console.log(allAnimals.filter(isDog)); */
   }
   /* Her kalder vi på displaylist men får den kun til at vælge det der seleced i filteret */
-  /* OBS det ville have væreet smart at seperere det fra displayList funktionen så den kan køre selv */
+
   return filteredList;
 }
 

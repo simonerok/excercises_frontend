@@ -321,16 +321,16 @@ function isDog(animal) {
 } */
 
 /* Dette er closure måden som skal bruges i stedte for at skrive det samme flere gange (hvis man fx har mange forskellige dyr og ikke kun 2 slags) */
-/* function filterList2(type) {
+function filterList2(type) {
   const list2 = allAnimals.filter(isAnimalType);
 
   function isAnimalType(animal) {
     return animal.type === type;
   }
-  console.log("list 2", list2);
+  /* console.log("list 2", list2); */
 }
 
-filterList2("Honeybadger"); */
+filterList2("Honeybadger");
 
 /* FLAG METHOD */
 /* sealevel: 1,5, not wearing wetsuit, is lying down*/
@@ -352,10 +352,10 @@ function isDrowned(seaLevel, wetsuit, lyingDown) {
 /* leap year øvelse */
 /* A year is a leap year if it is divisible by four, unless it is divisible by 100, then it is only a leap year if it is divisible by 400. */
 
-console.log("remainder", 2020 % 1);
+/* console.log("remainder", 2020 % 1);
 console.log("remainder", 2019 % 3);
 console.log("remainder", 1900 % 10);
-console.log("remainder", 2000 % 10);
+console.log("remainder", 2000 % 10); */
 
 function isLeapYear(year) {
   let leapFlag = false;
@@ -376,7 +376,7 @@ function checkIfLeapYear(year) {
   if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
     console.log(year + " is a leap year");
   } else {
-    console.log(year + " is not a leap year");
+    /* console.log(year + " is not a leap year"); */
   }
 }
 
@@ -384,3 +384,91 @@ function checkIfLeapYear(year) {
 const year = prompt("Enter a year:");
 
 checkIfLeapYear(year);
+
+/* load order result=(1,3,6,4,2,5) fordi .then ((resonse)) venter den med at atge sig af til de andre funktioner er kørt igennem aka den laver kun 1 ting ad gangen(javascript er single threaded) */
+
+const url2 = "https://petlatkea.dk/2021/hogwarts/students.json";
+function start() {
+  console.log("1");
+  fetch(url2)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("2");
+      prepareData();
+    });
+  console.log("3");
+  useData();
+  console.log("4");
+}
+
+function prepareData() {
+  console.log("5");
+}
+
+function useData() {
+  console.log("6");
+}
+
+start();
+
+/* LOAD MORE JSON FILES */
+/* with async function it works different result=(1,3,2,6,4,5) fordi når den kommer til await går den tilbage til der hvor den startede (function start) */
+const url3 = "https://petlatkea.dk/2021/hogwarts/students.json";
+function start() {
+  console.log("start app");
+  loadJSON();
+  console.log("app is running");
+
+  async function loadJSON() {
+    console.log("start loading data");
+    const response = await fetch(url3);
+    console.log("turn data into json");
+    const data = await response.json();
+    prepareData();
+  }
+}
+
+function prepareData() {
+  console.log("clean data");
+}
+
+function useData() {
+  console.log("6");
+}
+
+start();
+
+/* LOAD MORE JSON FILES */
+/* rækkefølge (1,2,3,6,4,5) 
+but 5 and 4 chance depending on the server and response time (race conditions)*/
+const url1 = "https://petlatkea.dk/2021/hogwarts/students.json";
+function start() {
+  console.log("1");
+  loadFile1();
+  console.log("2");
+  laodFile2();
+  console.log("3");
+  useData();
+}
+
+async function loadFile1() {
+  const response = await fetch(url1);
+  const data = await response.json();
+  console.log("4");
+}
+
+async function laodFile2() {
+  const response = await fetch(url1);
+  const data = await response.json();
+  console.log("5");
+}
+
+function prepareData() {
+  console.log("6");
+}
+
+function useData() {
+  console.log("6");
+}
+
+start();
