@@ -17,26 +17,45 @@
 /* Fonts */
 html {
   font-size: 18px;
+  --font-display: "bebas-neue", sans-serif;
+  font-weight: 400;
+  --font-paragraph: "Inter", sans-serif;
+  line-height: 1.7;
 }
 
-h1, h2, h3 {
+#logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 1.25px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: normal;
+  padding-bottom: 1rem;
   color: var(--color-darker);
 }
 
 h1 {
-
+  font-size: 3.05rem;
+  letter-spacing: 1px;
 }
 
 h2 {
-
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
 h3 {
-
+  font-size: 1.5rem;
 }
 
-p{
+p {
   color: var(--color-dark);
+  font-family: var(--font-paragraph);
 }
 
 /* UI Elements */
@@ -49,6 +68,10 @@ button {
   text-decoration: none;
   background-color: var(--color-darker);
   color: var(--color-lighter);
+  font-family: var(--font-paragraph);
+  /*  letter-spacing: 1.25px; */
+  text-transform: uppercase;
+  margin-block: 0.75rem;
 }
 
 .light_button {
@@ -56,7 +79,28 @@ button {
   color: var(--color-darker);
 }
 
-input[type=text] {
+.card_button_negative {
+  cursor: pointer;
+  border: 1px solid black;
+  background: transparent;
+  padding: 10px;
+  border-radius: 5px;
+  padding-block: 5px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+.card_button_positive {
+  cursor: pointer;
+  border: 1px solid black;
+  background: transparent;
+  padding: 10px;
+  border-radius: 5px;
+  padding-block: 5px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+input[type="text"] {
   box-sizing: border-box;
   width: 250px;
   height: 2rem;
@@ -68,7 +112,7 @@ input[type=text] {
 }
 
 /* Menu */
-nav{
+nav {
   display: flex;
   padding: 0.5rem;
   justify-content: space-between;
@@ -79,6 +123,12 @@ nav{
 nav a {
   color: white;
   text-decoration: none;
+}
+
+nav {
+  color: white;
+  text-decoration: none;
+  padding: 2rem;
 }
 
 /* Header */
@@ -181,7 +231,8 @@ footer {
   background-color: var(--color-darker);
 }
 
-footer h2, footer h3{
+footer h2,
+footer h3 {
   color: var(--color-lighter);
 }
 
