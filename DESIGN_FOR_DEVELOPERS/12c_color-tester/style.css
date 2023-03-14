@@ -3,13 +3,22 @@
   padding: 0px;
 }
 
+/* :root {
+  --color-primary1: #0a2616;
+  --color-primary2: #dcd8c9;
+  --color-secondary1: #5d7366;
+  --color-secondary2: #5c5b5b;
+  --color-accent1: #dcb3cc;
+  --color-accent2: #dcb3cc;
+} */
+/* Notice you can do this: --color-accent2: var(--color-accent1);*/
 :root {
-  --color-primary1: #f4f8f5;
-  --color-primary2: #deede2;
-  --color-secondary1: #393c3a;
-  --color-secondary2: #010b04;
-  --color-accent1: #88fa8d;
-  --color-accent2: #e10c96;
+  --color-primary1: #f7f6f1;
+  --color-primary2: #d9d7cf;
+  --color-secondary1: #354630;
+  --color-secondary2: var(--color-secondary1);
+  --color-accent1: #c9cbd0;
+  --color-accent2: #dcb3cc;
   /* Notice you can do this: --color-accent2: var(--color-accent1);*/
 }
 
@@ -18,7 +27,7 @@ html {
 }
 
 body {
-  background-color: #888;
+  background-color: #e5e5e5;
   color: #fff;
   font-family: sans-serif;
   line-height: 1.2rem;

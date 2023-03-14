@@ -16,11 +16,9 @@
 
 /* Fonts */
 html {
-  font-size: 18px;
   --font-display: "bebas-neue", sans-serif;
-  font-weight: 400;
   --font-paragraph: "Inter", sans-serif;
-  line-height: 1.7;
+  font-size: 18px;
 }
 
 #logo {
@@ -34,28 +32,30 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+  font-weight: 400;
   line-height: normal;
   padding-bottom: 1rem;
   color: var(--color-darker);
 }
 
 h1 {
-  font-size: 3.05rem;
+  font-size: 4.2rem;
   letter-spacing: 1px;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   letter-spacing: 1px;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 p {
   color: var(--color-dark);
   font-family: var(--font-paragraph);
+  line-height: 1.7;
 }
 
 /* UI Elements */
@@ -82,7 +82,8 @@ button {
 .card_button_negative {
   cursor: pointer;
   border: 1px solid black;
-  background: transparent;
+  background: black;
+  color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
   padding-block: 5px;
@@ -118,17 +119,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-darker);
+  color: white;
+  text-decoration: none;
+  padding: 2rem;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-}
-
-nav {
-  color: white;
-  text-decoration: none;
-  padding: 2rem;
 }
 
 /* Header */
