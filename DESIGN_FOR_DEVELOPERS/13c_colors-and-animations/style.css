@@ -7,41 +7,53 @@
 
 /* Fonts */
 html {
-  font-family: "Poppins", sans-serif;
+  font-family: "montserat", sans-serif;
   font-size: 1.2em;
+}
+
+:root {
+  --color-primary1: #efede3;
+  --color-primary2: #dad6d2;
+  --color-secondary1: #1d2828;
+  --color-secondary2: #222;
+  --color-accent1: #b5c8b0;
+  --color-accent2: #dcb3ccd0;
+  /* Notice you can do this: --color-accent2: var(--color-accent1);*/
 }
 
 h1,
 h2,
 h3 {
   color: #111;
-  font-family: "Noto Serif Display", serif;
+  font-family: "bebas-neue", serif;
   margin-bottom: 1rem;
 }
 
 h1 {
   color: #eee;
-  font-size: 3.052rem;
+  font-size: 4rem;
   line-height: 3.5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.953rem;
-  line-height: 2rem;
+  font-size: 2.75rem;
+  line-height: 3rem;
   margin-bottom: 2rem;
+  color: var(--color-secondary2);
 }
 
 h3 {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.25rem;
+  font-family: "montserat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.35rem;
   line-height: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 p {
   color: #222;
-  font-family: "Poppins", sans-serif;
+  font-family: "montserat", sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-bottom: 1.5rem;
@@ -49,7 +61,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #222;
+  color: var(--color-secondary2);
 }
 
 a:hover {
@@ -95,14 +107,17 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: var(--color-primary1);
   text-decoration: none;
+  font-family: "montserat", sans-serif;
+  text-transform: uppercase;
 }
 
 nav a.logo {
-  font-family: "Noto Serif Display", serif;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: bold;
+  font-family: "montserat", sans-serif;
+  text-transform: uppercase;
 }
 
 nav li {
@@ -118,20 +133,22 @@ header {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #222;
+  background-color: var(--color-secondary1);
 }
 
 header p {
-  color: #ddd;
+  color: var(--color-primary2);
 }
 
 header button {
   margin-bottom: 3rem;
+  color: var(--color-primary2);
 }
 
 .header_text {
   width: 30vw;
   min-width: 300px;
+  color: var(--color-primary1);
 }
 
 .header_graphics {
@@ -143,8 +160,9 @@ header button {
   background-color: #111;
   margin-bottom: 1rem;
   padding: 3rem;
+  color: var(--color-primary1);
 }
-.header_graphics object{
+.header_graphics object {
   width: 100%;
   height: 100%;
 }
@@ -156,7 +174,7 @@ header button {
 /* product section */
 #product {
   padding: 5rem 3rem;
-  background-color: #ddd;
+  background-color: var(--color-primary2);
 }
 
 #product h2 {
@@ -194,10 +212,10 @@ header button {
   min-height: 150px;
   padding: 1rem;
   margin: 3rem;
-  background-color: #ccc;
+  background-color: var(--color-accent2);
   border-radius: 300px;
 }
-.product_graphics object{
+.product_graphics object {
   width: 100%;
   height: 100%;
 }
@@ -209,6 +227,7 @@ header button {
   padding: 2rem;
   align-items: center;
   justify-content: space-around;
+  background-color: var(--color-primary1);
 }
 
 .highlight div {
@@ -216,8 +235,8 @@ header button {
 }
 
 .highlight div h2 {
-  font-size: 5.005rem;
-  line-height: 6rem;
+  font-size: 3.025rem;
+  line-height: normal;
 }
 
 .dark {
@@ -239,7 +258,7 @@ header button {
   padding: 2rem;
   align-items: center;
   justify-content: space-around;
-  background-color: #ccc;
+  background-color: var(--color-accent2);
 }
 
 #request div {
@@ -265,7 +284,7 @@ footer h3 {
 }
 
 footer a {
-  color: #ddd;
+  color: var(--color-primary1);
 }
 
 footer section.left {
@@ -286,8 +305,8 @@ footer section div {
   }
 
   #product h2 {
-    font-size: 1.953rem;
-    line-height: 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
     margin-bottom: 2rem;
   }
   .highlight div h2 {
@@ -295,4 +314,7 @@ footer section div {
     line-height: 3.5rem;
   }
 
+  #request h2 {
+    font-size: 3rem;
+  }
 }

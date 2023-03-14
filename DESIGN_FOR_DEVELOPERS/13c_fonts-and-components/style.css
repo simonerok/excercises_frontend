@@ -17,6 +17,7 @@
 /* Fonts */
 html {
   --font-display: "bebas-neue", sans-serif;
+  --font-display2: "oswald", sans-serif;
   --font-paragraph: "Inter", sans-serif;
   font-size: 18px;
 }
@@ -32,6 +33,16 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+  font-weight: 400;
+  line-height: normal;
+  padding-bottom: 1rem;
+  color: var(--color-darker);
+}
+
+h2,
+h3,
+h4 {
+  font-family: var(--font-display2);
   font-weight: 400;
   line-height: normal;
   padding-bottom: 1rem;
@@ -78,6 +89,12 @@ button {
   background-color: var(--color-lighter);
   color: var(--color-darker);
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: oldlace;
+  padding: 2rem;
+}
 
 .card_button_negative {
   cursor: pointer;
@@ -89,6 +106,8 @@ button {
   padding-block: 5px;
   font-family: var(--font-display);
   text-transform: uppercase;
+  margin-block: 10px;
+  width: 60px;
 }
 .card_button_positive {
   cursor: pointer;
@@ -99,6 +118,7 @@ button {
   padding-block: 5px;
   font-family: var(--font-display);
   text-transform: uppercase;
+  width: 60px;
 }
 
 input[type="text"] {
