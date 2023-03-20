@@ -1,4 +1,3 @@
-
 /* Resetter */
 * {
   margin: 0px;
@@ -93,8 +92,17 @@ button {
 .card {
   display: flex;
   flex-direction: column;
-  background-color: oldlace;
+  background-color: rgb(254, 254, 254);
+  box-shadow: black 0px 5px 5px 0px;
   padding: 2rem;
+  width: 200px;
+  flex-wrap: wrap;
+  object-fit: cover;
+}
+
+img {
+  height: auto;
+  aspect-ratio: 1/1;
 }
 
 .card_button_negative {
@@ -208,6 +216,7 @@ header {
 #cards {
   min-height: 80vh;
   padding: 5rem 2rem;
+  flex-wrap: wrap;
 }
 
 #card_container {
