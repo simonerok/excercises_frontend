@@ -1,0 +1,187 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+section {
+  margin: 2rem;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  font-size: larger;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav em {
+  font-weight: bolder;
+  font-style: normal;
+  font-size: larger;
+}
+
+header {
+  border-bottom: 1px solid rgb(99, 99, 99);
+  background-color: whitesmoke;
+  padding: 2rem;
+}
+
+input[type="button"] {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(220, 78, 26, 0.857);
+  color: white;
+  padding-inline: 20px;
+  padding-block: 5px;
+}
+
+section {
+  text-align: center;
+}
+body {
+  background-color: grey;
+}
+
+h1 {
+  font-size: 3.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+  display: grid;
+  place-items: start;
+}
+
+#selection {
+  display: grid;
+  justify-content: start;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 25px;
+}
+
+/* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); */
+
+/* styling af bokse */
+fieldset {
+  background-color: whitesmoke;
+  display: flex;
+}
+
+legend {
+  padding: 10px;
+  display: contents;
+}
+
+label {
+  padding: 20px;
+  display: flex;
+}
+
+/* Styling af input slider */
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+#selection span {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 30px;
+  background: whitesmoke;
+  float: left;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid black;
+}
+
+span:after {
+  /* styling for labels - on toggle */
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: orangered;
+  border-radius: 90px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+input:checked + span:after {
+  left: calc(100% - 5px);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  background-color: green;
+}
+
+span:active:after {
+  width: 45px;
+}
+
+.slider {
+  gap: 20px;
+}
+
+/* styling dots */
+.dots {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+input #all {
+  background: orangered;
+}
+
+/* STYLING CARDS */
+#cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+  /* justify-items: center; */
+  justify-content: space-between;
+}
+
+img {
+  aspect-ratio: 3/2;
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card {
+  background-color: white;
+  box-shadow: black 0px 7px 10px 0px;
+  border-radius: 5px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card_text {
+  max-width: 30ch;
+  padding: 1rem;
+  text-align: left;
+}
+
+p {
+  margin-block: 1rem;
+}
+¨ .btn_contaienr {
+  display: flex;
+  justify-content: space-between;
+}
