@@ -11,7 +11,10 @@ import { animate, timeline } from "https://cdn.skypack.dev/motion";
 /* animate(".ball", { scale: 0 }, { delay: 2 }); */
 
 /* konverteret til timelines */
-myTimeline = timeline([
-  [".ball", { x: 400, rotate: 200 }, { duration: 2 }],
-  [".ball", { scale: 0 }, { delay: 1 }],
-]);
+const myTimeline = timeline(
+  [
+    [".ball", { x: 400, rotate: 200 }],
+    [".ball", { scale: 0, x: "100vw", y: "-100vh" }],
+  ],
+  { duration: 4 }
+);
