@@ -1,0 +1,15 @@
+body {
+  background-color: darkgrey;
+}
+
+.box {
+  width: 10rem;
+  height: 10rem;
+  background-color: antiquewhite;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
