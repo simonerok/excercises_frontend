@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Big Motion One Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="progress"></div>
+  <header>
+    <h1>Animation with Motion One</h1>
+    <h2>Explore the code of this page</h2>
+  </header>
+  <main>
+    <section>
+
+      <h2>Link to CDN</h2>
+
+      <p>We are going to link to <a href="https://motion.dev/" target="_blank">Motion One</a> from a <a
+          href="https://cdn.skypack.dev/motion" target="_blank">CDN library</a></p>
+      <pre>import { animate, scroll, stagger, inView } from "https://cdn.skypack.dev/motion";</pre>
+    </section>
+    <section>
+
+      <h2>Animate</h2>
+
+      <!-- <p>We need to import the modules we'll have to use, we're gonna import them all so we don't have problems with
+        that. Otherwise, for the sake of sustainability and pagespeed (sometimes it's the same), you should only import
+        what you need ...</p>
+      <pre>import { animate,scroll  } from "motion"</pre> -->
+
+      <p>Let's start with an animation</p>
+      <pre>animate("body", { opacity: [0, 1] }, { duration: 5 });</pre>
+      <p>This is the animation you'll see if you reload the page.<br>It animates the opacity of the HTML body element
+        from 0 to 1 in 5 seconds. The array holds the keyframes, in this case two.</p>
+
+    </section>
+    <section class="animate_more">
+
+      <h2>Animate more</h2>
+      <p>Here's an example of a timeline animation, each animation in the timeline must finish before the next can
+        begin.</p>
+      <pre>animate(".huge_letter", 
+        const hugeLetterAni = timeline(
+  [
+    [".huge_letter", { rotate: 90 }, { duration: 1, easing: "linear" }],
+    [".huge_letter", { x: 200 }, { duration: 3, delay: 1 }],
+    [".huge_letter", { rotate: -90 }, { duration: 2, easing: "linear" }],
+    [".huge_letter", { x: 0 }, { duration: 3, delay: 1 }],
+    [".huge_letter", { rotate: 0 }, { duration: 1, easing: "linear" }],
+  ],
+  { repeat: Infinity }
+);</pre>
+      <div class="huge_letter">A</div>
+
+
+
+    </section>
+    <section>
+      <h2>Stagger</h2>
+      <p>This animation animates the black squares to the right edge of the page and back when the
+        .stagger_box_container is in view.
+        When it's out of view the return statement of the inview function is fired and the animations stops and is there
+        by also reset, which wouldn't happen if you paused it.
+        And it seems that Fire Fox can't handle calc if it's not with the transform syntax which now should be obsolete.
+      </p>
+      <pre>const staggerAni = animate(
+        ".stagger_box",
+        { transform: "translateX(calc(100vw - 21rem))" },
+        { delay: stagger(1, { start: 0.5 }), easing: "ease-in-out", duration: 5
+        , repeat: Infinity, direction: "alternate" }
+);
+staggerAni.stop();
+inView(".stagger_box_container", (info) => {
+  // and remove it again
+  console.log("stagger_box_container INVIEW");
+  staggerAni.play();
+  return () => {
+    staggerAni.cancel();
+    console.log("stagger_box_container OUT OF VIEW");
+  };
+});</pre>
+      <div class="stagger_box_container">
+        <div class="stagger_box"></div>
+        <div class="stagger_box"></div>
+        <div class="stagger_box"></div>
+        <div class="stagger_box"></div>
+        <div class="stagger_box"></div>
+        <div class="stagger_box"></div>
+      </div>
+    </section>
+    <section class="scroll_linked_rotation">
+      <h2>SCROLL LINKED ROTATION</h2>
+      <p>This rotates the .scroll_linked_rotation_box 90 degrees when scroll_linked_rotation_box is being scrolled e.g.
+        is the target.</p>
+      <pre>
+scroll(
+  animate(".scroll_linked_rotation_box", {
+    rotate: 90,
+  }),
+  { target: document.querySelector(".scroll_linked_rotation_box") }
+);
+      </pre>
+      <div class="scroll_linked_rotation_box">TILT</div>
+
+    </section>
+    <section class="scroll_linked_animation">
+      <h2>INVIEW BOX ANIMATION</h2>
+      <p>Boxes animates in with random colors and from random positions</p>
+      <pre>
+inView(".in_view_animation_box_container", (info) => {
+  document.querySelectorAll(".in_view_animation_box").forEach((each) => {
+    animate(each, { x: [Math.floor(Math.random() * 2000), 0], backgroundColor: [null, `var(--color-palette${Math.ceil(Math.random() * 5)})`] }, { duration: 2 });
+  });
+  return () => {};
+});
+      </pre>
+      <div class="in_view_animation_box_container">
+        <div class="in_view_animation_box">1</div>
+        <div class="in_view_animation_box">2</div>
+        <div class="in_view_animation_box">3</div>
+        <div class="in_view_animation_box">4</div>
+        <div class="in_view_animation_box">5</div>
+        <div class="in_view_animation_box">6</div>
+        <div class="in_view_animation_box">7</div>
+        <div class="in_view_animation_box">8</div>
+        <div class="in_view_animation_box">9</div>
+        <div class="in_view_animation_box">10</div>
+        <div class="in_view_animation_box">11</div>
+        <div class="in_view_animation_box">12</div>
+        <div class="in_view_animation_box">13</div>
+        <div class="in_view_animation_box">14</div>
+        <div class="in_view_animation_box">15</div>
+        <div class="in_view_animation_box">16</div>
+        <div class="in_view_animation_box">17</div>
+        <div class="in_view_animation_box">18</div>
+        <div class="in_view_animation_box">19</div>
+        <div class="in_view_animation_box">20</div>
+      </div>
+    </section>
+    <!-- <div class="a_circle upper"></div> -->
+    <section>
+      <h2>SCROLL</h2>
+      <p>There's already one scroll animation on this page: the red progressbar at the top.<br>When no target is
+        defined, the target is the viewport and that's what we want with a progress-bar like this.
+
+      </p>
+      <pre>scroll(animate(".progress", { scaleX: [0, 1] }));</pre>
+      <p>Here's an animation that that's linked to the scrolling of the page and animates a picture gallery<br>You'll
+        need to use
+        position:sticky on the gallery to make the page stop moving, and you'll need to heighten the section that
+        contains the gallery so you have
+        something to scroll.
+        You'll need to set overflow-x: hidden on body or html, otherwise you'll get horizontal scrollbars🤮<br>The
+        target is now the section holding the gallery, and some calculations have to be done to figure out the width of
+        the gallery
+        Once again we must use transform: translateX instead of translateX 'cause Fire Fox won't have it wiith calc</p>
+      <pre>
+const items = document.querySelectorAll(".scroll_section li");
+scroll(
+  animate(".scroll_section ul",
+  {
+    transform: `translateX(calc(-${items.length - 1}*(100vw - 20rem) ))`,,
+  }),
+  { target: document.querySelector(".scroll_section") }
+);
+      </pre>
+    </section>
+    <section class="scroll_section">
+      <ul>
+        <li>
+          <img src="public/1.jpg" />
+          <h2>#001 Freddie</h2>
+        </li>
+        <li>
+          <img src="public/2.jpg" />
+          <h2>#002 Freddie</h2>
+        </li>
+        <li>
+          <img src="public/3.jpg" />
+          <h2>#003 Freddie</h2>
+        </li>
+        <li>
+          <img src="public/4.jpg" />
+          <h2>#004 Freddie</h2>
+        </li>
+        <li>
+          <img src="public/5.jpg" />
+          <h2>#005 Freddie</h2>
+        </li>
+
+      </ul><!-- <div id="vertical_move">Vertical Move</div> -->
+
+    </section>
+
+    <div class="shadow_element"></div>
+
+    <section class="more_scroll_section">
+      <h2>MORE SCROLL: PARALLAX</h2>
+      <p>Here we add a scroll to every article in the section.<br>The target is the header (h2), and when the article
+        is
+        scrolled the header is animated from the bottom of the article to the top.</p>
+      <pre>
+document.querySelectorAll(".more_scroll_section article").forEach((article) => {
+  const header = article.querySelector("h2");
+  scroll(animate(header, { y: ["-50vh", "50vh"] }), {
+  target: header,
+  });
+});</pre>
+      <p></p>
+      <article>
+        <h2>#1</h2>
+      </article>
+      <article>
+        <h2>#2</h2>
+      </article>
+      <article>
+        <h2>#3</h2>
+      </article>
+      <article>
+        <h2>#4</h2>
+      </article>
+      <article>
+        <h2>#5</h2>
+      </article>
+
+      </div>
+    </section>
+
+
+  </main>
+  <footer>
+
+  </footer>
+  <script type="module" src="main.js"></script>
+</body>
+
+
+</html>
