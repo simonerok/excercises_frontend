@@ -1,0 +1,269 @@
+/* Tip, copy paste from 13c.01.01 & 13c.01.02 to get fonts and colors up and running ... */
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  /* Fonts */
+html {
+    font-family: "montserat", sans-serif;
+    font-size: 1.2em;
+  }
+
+  h1,
+h2,
+h3 {
+  color: #111;
+  font-family: "bebas-neue", serif;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  color: var(--color-light);
+  font-size: 4rem;
+  line-height: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 2.75rem;
+  line-height: 3rem;
+  margin-bottom: 2rem;
+  color: var(--color-secondary2);
+}
+
+h3 {
+  font-family: "montserat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: #222;
+  font-family: "montserat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* COLORS*/
+:root {
+    --color-white: #ffffff;
+    --color-light: #b9ab98e1;
+    --color-lighter: #fff7ef;
+    --color-dark: #1c2e2a;
+    --color-darker: #222;
+    --color-accent1: #aee8da;
+    --color-accent2: #dcb3ccd0;
+    /* Notice you can do this: --color-accent2: var(--color-accent1);*/
+  }
+
+
+  /* BUTTONS */
+  button {
+    display: inline-block;
+    height: 3rem;
+  width: 10rem;
+    border: none;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--color-accent1);
+    color: var(--color-darker);
+  }
+
+  /* NAV */
+nav {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-darker)
+  }
+  
+  nav a {
+    color: var(--color-lighter);
+    text-decoration: none;
+    font-family: "montserat", sans-serif;
+    text-transform: uppercase;
+  }
+  
+  nav a.logo {
+    font-size: 1.75rem;
+    font-weight: bold;
+    font-family: "montserat", sans-serif;
+    text-transform: uppercase;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin: 0px 1rem;
+  }
+
+  ul a{
+  font-size: 1rem;
+  }
+
+  #logo{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* HEADER */
+
+header {
+    display: flex;
+    min-height: 80vh;
+    padding: 5rem;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: var(--color-light);
+  }
+  
+  header p {
+    color: var(--color-primary2);
+  }
+  
+  header button {
+    margin-bottom: 3rem;
+    color: var(--color-light);
+  }
+  
+  .header_text {
+    width: 30vw;
+    min-width: 300px;
+    color: var(--color-lighter);
+  }
+
+  header h1{
+    color: var(--color-white);
+  }
+  
+  .header_graphics {
+    width: 25vw;
+    height: 25vw;
+    min-width: 250px;
+    min-height: 250px;
+    border-radius: 250px;
+    background-color: #111;
+    margin-bottom: 1rem;
+    padding: 3rem;
+    color: var(--color-primary1);
+  }
+  .header_graphics object {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .header_graphics object svg path {
+    fill: #f00;
+  }
+  
+  /* SECTION ADVANTAGES */
+  #advantages {
+    padding: 5rem 3rem;
+    background-color: var(--color-lighter);
+  }
+
+  #advantages h2 {
+    font-size: 3.052rem;
+    line-height: 3.5rem;
+  }
+
+  #advantages h3 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+
+  .advantages_cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .advantages_card {
+    background-color: var(--color-light);
+    box-shadow: black 0px 7px 10px 0px;
+    border-radius: 5px;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+    /* CARDS */
+  img {
+    aspect-ratio: 3/2;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+   border: 1px solid black; 
+  }
+
+  .advantages_card_text {
+    max-width: 30ch;
+    padding: 1rem;
+    text-align: left;
+    flex-wrap: wrap;
+    display: flex;
+  }
+
+  .advantages_card_text {
+    flex-wrap: wrap;
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+
+
+/* Two columns: graphics to the left, text to the right */
+  /* SECTION PRODUCTS */
+  #product {
+    padding: 5rem 3rem;
+    background-color: var(--color-primary2);
+  }
+  
+  #product h2 {
+    font-size: 3.052rem;
+    line-height: 3.5rem;
+  }
+  
+  #product article {
+    display: flex;
+    min-height: 50vh;
+    padding: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  #product article:first-child {
+    min-height: 40vh;
+  }
+  
+  .product_text {
+    width: 50vw;
+    min-width: 300px;
+  }
+  
+  #product article:first-child .product_text {
+    width: 75vw;
+    min-width: 300px;
+  }
+ /* graphics */
+  .product_graphics {
+    width: 15vw;
+    height: 15vw;
+    min-width: 150px;
+    min-height: 150px;
+    padding: 1rem;
+    margin: 3rem;
+    background-color: var(--color-accent2);
+    border-radius: 300px;
+  }
+  .product_graphics object {
+    width: 100%;
+    height: 100%;
+  } 
