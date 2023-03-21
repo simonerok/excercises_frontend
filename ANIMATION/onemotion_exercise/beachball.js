@@ -14,7 +14,7 @@ import { animate, timeline } from "https://cdn.skypack.dev/motion";
 const myTimeline = timeline(
   [
     [".ball", { x: 400, rotate: 200 }],
-    [".ball", { scale: 0, x: "100vw", y: "-100vh" }],
+    [".ball", { scale: 0, transform: "translateX(100vh)", transform: "translateY(-100vw)" }],
   ],
   { duration: 4 }
 );
