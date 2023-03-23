@@ -1,0 +1,28 @@
+#right-eye .cls-2 {
+  fill: red;
+}
+
+.stroke_animation {
+  stroke-width: 10px;
+  stroke: red;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  stroke-dasharray: 10 5;
+  animation-name: stroke-animation;
+  animation-timing-function: linear;
+}
+
+@keyframes stroke-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 20;
+  }
+  /*  0% {
+    stroke-dasharray: 5 10;
+  }
+  100% {
+    stroke-dasharray: 5 10;
+  } */
+}
