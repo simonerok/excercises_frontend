@@ -19,10 +19,10 @@
   50% {
     stroke-dashoffset: 20;
   }
-  /*  0% {
+  /*   0% {
     stroke-dasharray: 5 10;
   }
   100% {
-    stroke-dasharray: 5 10;
+    stroke-dasharray: 10 5;
   } */
 }

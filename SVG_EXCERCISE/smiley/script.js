@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   document.querySelector("#right-eye").addEventListener("mouseover", onOver);
   document.querySelector("#right-eye").addEventListener("mouseout", onOut);
+  /* man kan tilføje det på specifikke numre og på hele arrayet med forEach((g, index, array) fx*/
   document.querySelectorAll("g").forEach((g) => {
     g.addEventListener("mouseover", onOver);
     g.addEventListener("mouseout", onOut);
