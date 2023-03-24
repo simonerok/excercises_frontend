@@ -1,0 +1,52 @@
+#right-eye {
+  fill: #f00;
+}
+
+#head .fill {
+  fill: #ffec00;
+}
+
+.over {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  stroke-width: 20px;
+  stroke-dasharray: 10 10;
+  stroke: #f00;
+  animation-name: stroke-animation;
+  animation-timing-function: linear;
+}
+
+@keyframes stroke-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 20;
+  }
+}
+
+@keyframes anim {
+  0% {
+  }
+  5% {
+    transform: rotate(90deg) scale(1.2);
+  }
+  10% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  90% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  95% {
+    transform: rotate(270deg) scale(1.2);
+  }
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+
+.target {
+  animation: anim 2s;
+  animation-fill-mode: forwards;
+}

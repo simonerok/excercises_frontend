@@ -26,3 +26,18 @@
     stroke-dasharray: 10 5;
   } */
 }
+
+@keyframes move {
+  0% {
+    transform: scale(1.3rem);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: translate(-3em, 1em);
+  }
+  0% {
+    transform: scale(2);
+  }
+}
