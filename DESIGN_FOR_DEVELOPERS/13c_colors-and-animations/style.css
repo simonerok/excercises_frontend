@@ -11,14 +11,17 @@ html {
   font-size: 1.2em;
 }
 
+
+
 :root {
-  --color-primary1: #efede3;
-  --color-primary2: #e8e3dd;
-  --color-secondary1: #1c2e2a;
-  --color-secondary2: #222;
-  --color-accent1: #b5c8b0;
-  --color-accent2: #dcb3ccd0;
-  /* Notice you can do this: --color-accent2: var(--color-accent1);*/
+  --color-darker: #171c33;
+  --color-dark: #483e49;
+  --color-light: #bebdc9;
+  --color-lighter: #e4e1e1;
+  --color-accent1: #b4b0bd;
+  --color-accent2: rgb(252, 249, 249);
+  --color-accent3: rgb(13, 14, 15);
+
 }
 
 h1,
@@ -30,7 +33,7 @@ h3 {
 }
 
 h1 {
-  color: #eee;
+  color: var(--color-lighter);
   font-size: 4rem;
   line-height: 3.5rem;
   margin-bottom: 2rem;
@@ -40,7 +43,7 @@ h2 {
   font-size: 2.75rem;
   line-height: 3rem;
   margin-bottom: 2rem;
-  color: var(--color-secondary2);
+  color: var(--color-dark);
 }
 
 h3 {
@@ -61,7 +64,7 @@ p {
 
 a {
   text-decoration: none;
-  color: var(--color-secondary2);
+  color: var(--color-dark);
 }
 
 a:hover {
@@ -103,11 +106,11 @@ nav {
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
-  background-color: #111;
+  background-color: var(--color-accent1);
 }
 
 nav a {
-  color: var(--color-primary1);
+  color: var(--color-darker);
   text-decoration: none;
   font-family: "montserat", sans-serif;
   text-transform: uppercase;
@@ -133,22 +136,22 @@ header {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: var(--color-secondary1);
+  background-color: var(--color-darker);
 }
 
 header p {
-  color: var(--color-primary2);
+  color: var(--color-light);
 }
 
 header button {
   margin-bottom: 3rem;
-  color: var(--color-primary2);
+  color: var(--color-lighter);
 }
 
 .header_text {
   width: 30vw;
   min-width: 300px;
-  color: var(--color-primary1);
+  color: var(--color-light);
 }
 
 .header_graphics {
@@ -157,10 +160,10 @@ header button {
   min-width: 250px;
   min-height: 250px;
   border-radius: 250px;
-  background-color: #111;
+  background-color: var(--color-accent3);
   margin-bottom: 1rem;
   padding: 3rem;
-  color: var(--color-primary1);
+  color: var(--color-light);
 }
 .header_graphics object {
   width: 100%;
@@ -174,7 +177,7 @@ header button {
 /* product section */
 #product {
   padding: 5rem 3rem;
-  background-color: var(--color-primary2);
+  background-color: var(--color-lighter);
 }
 
 #product h2 {
@@ -218,6 +221,7 @@ header button {
 .product_graphics object {
   width: 100%;
   height: 100%;
+  
 }
 
 /* highlight sections */
@@ -227,7 +231,7 @@ header button {
   padding: 2rem;
   align-items: center;
   justify-content: space-around;
-  background-color: var(--color-primary1);
+  background-color: var(--color-light);
 }
 
 .highlight div {
@@ -273,18 +277,18 @@ footer {
   align-items: top;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: #111;
-  color: #ddd;
+  background-color: var(--color-accent1);
+  color: var(--color-darker);
 }
 
 footer h2,
 footer h3 {
-  color: #eee;
+  color: var(--color-darker);
   margin-bottom: 1rem;
 }
 
 footer a {
-  color: var(--color-primary1);
+  color: var(--color-darker);
 }
 
 footer section.left {
@@ -317,13 +321,18 @@ footer section div {
   #request h2 {
     font-size: 3rem;
   }
+
+  li a{
+   display:none;
+  }
 }
 
 /* DARK THEME */
 html[data-theme="dark"] {
-  --color-primary1: #6d6953;
-  --color-primary2: #444444;
-  --color-accent2: #7b9274ae;
+  --color-darker:rgba(164, 144, 185, 0.87);
+  --color-accent1:rgb(79, 74, 85);
+  --color-lighter:rgb(217, 210, 218) ;
+  --color-accent3:var(--color-darker);
 }
 
 input[type="checkbox"] {
@@ -337,7 +346,7 @@ label {
   text-indent: -9999px;
   width: 50px;
   height: 27px;
-  background: grey;
+  background: rgb(23, 28, 51);
   float: right;
   border-radius: 20px;
   position: relative;
@@ -359,7 +368,7 @@ label:after {
 
 input:checked + label {
   /* conditional check while toggling */
-  background: var(--color-primary1);
+  background: var(--color-darker);
 }
 
 input:checked + label:after {

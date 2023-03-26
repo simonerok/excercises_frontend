@@ -8,16 +8,16 @@
 /* Color Properties */
 :root {
   --color-darker: rgb(14, 17, 37);
+  --color-darker2: rgb(66, 67, 97);
   --color-dark: rgb(72, 62, 73);
-  --color-light: rgb(194, 194, 194);
+  --color-light: rgb(190, 189, 201);
   --color-lighter: rgb(228, 225, 225);
-  /* you could add an accent color for CTAs and anchor tags ;-) */
+ 
 }
 
 /* Fonts */
 html {
   --font-display: "bebas-neue", sans-serif;
-  --font-display2: "oswald", sans-serif;
   --font-paragraph: "Inter", sans-serif;
   font-size: 18px;
 }
@@ -39,15 +39,6 @@ h4 {
   color: var(--color-darker);
 }
 
-h2,
-h3,
-h4 {
-  font-family: var(--font-display2);
-  font-weight: 400;
-  line-height: normal;
-  padding-bottom: 1rem;
-  color: var(--color-darker);
-}
 
 h1 {
   font-size: 4.2rem;
@@ -61,6 +52,7 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
+  padding-bottom: 0.5rem;
 }
 
 p {
@@ -85,7 +77,9 @@ button {
   margin-block: 0.75rem;
 }
 
-
+#container_smallbtn {
+  margin-block: 0.5rem;
+}
 
 .arrow-button {
   position: relative;
@@ -138,11 +132,12 @@ img {
   aspect-ratio: 1/1;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 0.5rem;
 }
 
 .card_button_positive {
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid var(--color-darker);
   background: var(--color-darker);
   color: whitesmoke;
   padding: 10px;
@@ -155,7 +150,7 @@ img {
 }
 .card_button_negative {
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid var(--color-darker);
   background: transparent;
   padding: 10px;
   border-radius: 5px;
@@ -163,6 +158,7 @@ img {
   font-family: var(--font-display);
   text-transform: uppercase;
   width: 60px;
+  color: var(--color-darker);
 }
 
 input[type="text"] {
@@ -252,7 +248,15 @@ header {
   min-height: 80vh;
   padding: 5rem 2rem;
   flex-wrap: wrap;
+  background-color: var(--color-lighter);
 }
+#cards h2 {
+ color: var(--color-darker);
+}
+
+#cards p {
+  color: var(--color-darker2);
+ }
 
 #card_container {
   display: grid;
@@ -313,4 +317,52 @@ footer section {
 
 footer section div {
   margin: 0px 1rem 1rem 1rem;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 0.9em;
+  }
+h1{
+  font-size: 3.5rem;
+}
+
+  #product h2 {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-bottom: 2rem;
+  }
+  .highlight div h2 {
+    font-size: 2.25rem;
+    line-height: 3.5rem;
+  }
+
+  #request h2 {
+    font-size: 3rem;
+  }
+
+  /* CARDS */
+ 
+  #card_container {
+    display: flex;
+    margin-top: 2rem;
+    grid-gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #cards {
+    padding: 0px;
+  padding-block: 3rem;
+  padding-inline: 1.2rem;
+  }
+
+  .card {
+    width: 150px;
+   
+  }
+
+
 }
